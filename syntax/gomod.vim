@@ -12,7 +12,7 @@ syntax keyword gomodVerbModule module contained
 syntax keyword gomodVerbRequire require contained
 
 syntax match  gomodModuleName '[0-9A-Za-z_\.\/-]\+' contained
-syntax match  gomodModuleVersion 'v\d\+\(\.\d\+\(\.\d\+\)\?\)\?\(-\d\{14}-\x\{12}\)\?' contained
+syntax match  gomodModuleVersion 'v\d\+\(\.\d\+\(\.\d\+\)\?\)\?\(-\d\{14}-\x\{12}\)\?\(+incompatible\)\?' contained
 syntax region gomodDep start="^\s*" end="$" contains=gomodModuleName,gomodModuleVersion,gomodComment contained
 syntax match  gomodReplaceArrow /=>/
 syntax region gomodComment start="//" end="$"
@@ -33,5 +33,6 @@ hi default link gomodVerbExclude Keyword
 hi default link gomodModuleVersion Constant
 hi default link gomodModuleName Type
 
+syntax sync minlines=10000
 
 let b:current_syntax = "gomod"
